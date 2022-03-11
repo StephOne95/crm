@@ -12,7 +12,7 @@ class AuthController extends Controller
         $this->middleware('auth:api', ['except' => ['login']]);
     }
 
-    public function login(): JsonResponse
+    public function login(): JsonResponse               
     {
         $credentials = request(['email', 'password']);
 

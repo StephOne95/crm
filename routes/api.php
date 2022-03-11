@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CompanyController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +25,7 @@ Route::prefix('auth')->group(function() {
 
 Route::middleware('auth:api')->group(function () {
     Route::apiResource('company', CompanyController::class)->except('index');
+    Route::apiResource('employee', EmployeeController::class);
 });
 
 Route::get('company', [CompanyController::class, 'index']);

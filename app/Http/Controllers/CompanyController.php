@@ -7,14 +7,13 @@ use App\Http\Requests\UpdateCompanyRequest;
 use App\Http\Resources\CompanyCollection;
 use App\Http\Resources\CompanyResource;
 use App\Models\Company;
-use App\Models\User;
 use Illuminate\Auth\Access\AuthorizationException;
 
 class CompanyController extends Controller
 {
     public function index(): CompanyCollection
     {
-        return new CompanyCollection(Company::query()->paginate(5));
+        return new CompanyCollection(Company::query()->with('employees')->paginate(5));
     }
 
     public function store(StoreCompanyRequest $request): CompanyResource

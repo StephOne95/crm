@@ -23,6 +23,7 @@ class CompanyResource extends JsonResource
             'address'   => $this->when($isAdmin, $this->address),
             'logo'      => asset($this->logo),
             'website'   => $this->when($isAdmin, $this->website),
+            'employee'  => $this->when($isAdmin, $this->whenLoaded('employees')),
         ];
     }
 }

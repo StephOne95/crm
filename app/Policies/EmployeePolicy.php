@@ -2,12 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Company;
+use App\Models\Employee;
 use App\Models\User;
 use App\Traits\PolicyTrait;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class CompanyPolicy
+class EmployeePolicy
 {
     use HandlesAuthorization, PolicyTrait;
 
@@ -16,9 +16,9 @@ class CompanyPolicy
         return false;
     }
 
-    public function view(User $user, Company $company): bool
+    public function view(User $user, Employee $employee): bool
     {
-        return $user->roles()->first()->isSubscriber();
+        return false;
     }
 
     public function create(User $user): bool
@@ -31,7 +31,7 @@ class CompanyPolicy
         return false;
     }
 
-    public function delete(User $user, Company $company): bool
+    public function delete(User $user, Employee $employee): bool
     {
         return false;
     }
